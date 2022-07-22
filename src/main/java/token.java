@@ -1,7 +1,6 @@
-
 import java.util.Scanner;
 
-public class tokenGenerator {
+public class token {
     public static void tokenGenerator(String[] args) {
 
         Scanner scanner= new Scanner(System.in);
@@ -19,6 +18,6 @@ public class tokenGenerator {
 
 
 
-    }
 
+    }
 }
