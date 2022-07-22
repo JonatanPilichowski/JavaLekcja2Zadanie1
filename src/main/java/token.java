@@ -1,23 +1,45 @@
 import java.util.Scanner;
 
 public class token {
-    public static void tokenGenerator(String[] args) {
 
-        Scanner scanner= new Scanner(System.in);
-        int income=0;
+
+    static void tokenGenerator() {
+        System.out.println("Siema");
+
+    }
+
+    public static void main(String[] args) {
+
+tokenGenerator();
+        Scanner scanner = new Scanner(System.in);
+        int tokenSize = 0;
+        boolean result;
         char genRandom;
 
         do {
             System.out.println("Dostępne rozmiary tokenów to 5, 10, 15. Podaj wielkość z rozmiarów ");
-            income = scanner.nextInt();
-
-
-        }while (income != 5 || income !=10 || income !=15);
-
-        System.out.println("Wybrałeś rozmiar: " + income);
 
 
 
+            tokenSize = scanner.nextInt();
+
+
+            if (tokenSize == 5) {
+                result = true;
+            } else if (tokenSize == 10) {
+                result = true;
+            } else if (tokenSize == 15) {
+                result = true;
+            } else {
+                result = false;
+            }
+
+
+        } while (!result);
+
+
+        System.out.println("Wybrałeś rozmiar: " + tokenSize);
 
     }
+
 }
