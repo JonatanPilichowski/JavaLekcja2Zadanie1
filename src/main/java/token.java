@@ -1,9 +1,6 @@
 import com.sun.jdi.connect.Connector;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class token {
     static void tokenGenerator() {
@@ -20,7 +17,6 @@ public class token {
         char genRandom;
         int tokenSize = 0;
         String inputString;
-
         boolean resultCheck;
 
         do {
@@ -58,14 +54,30 @@ public class token {
 
         List<String> tokenValue = new ArrayList<>();
 
-        for (int i = 0; i < tokenSize; i++) {
-            Random r = new Random();
-            genRandom = (char) (r.nextInt(93) + '!');
-            tokenValue.add(String.valueOf(genRandom));
+        Random r = new Random();
+      //  List<Integer> charactersToDraw =  Arrays.asList(33,35,36,37,38,40,41,42,64,94);
+        List<Integer> charactersToDraw=new ArrayList<>();
+        // a-z = 97-122 ; A-Z 65-90 ; 0-9 = 48-57 ; [!@#$%^&*()] = 33, 35, 36, 37, 38, 40, 41, 42, 64, 94 ;
+        for (int i=0; i<=25; i++){
+            charactersToDraw.add(65+i);
+            charactersToDraw.add(97+i);
+        }
 
+      //  List<String> charactersToDrawChar = new ArrayList<>();
+
+
+        for (int j = 0; j < tokenSize; j++) {
+
+         //   genRandom = (char) (r.nextInt(93) + '!');
+         //   tokenValue.add(String.valueOf(genRandom));
+
+            int randomNumber=  charactersToDraw.get(r.nextInt(charactersToDraw.size()));
+            genRandom= (char) randomNumber;
+            tokenValue.add(String.valueOf(genRandom));
         }
         String listString = String.join("", tokenValue);
         System.out.println("Wygenerowano token: " + listString);
+        System.out.println("lista: " + charactersToDraw);
     }
 
 }
