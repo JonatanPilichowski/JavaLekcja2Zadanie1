@@ -3,8 +3,8 @@ import java.util.*;
 public class token {
     static void tokenGenerator(int tokenSize) {
 
-        //This method generates the token from 72 characters pool. Token size is specified by tokenSize parameter;
-        System.out.println("Wybrałeś token o rozmiarze: " + tokenSize + ".");
+        /*This method generates the token values from 72 characters pool. Token size is specified by tokenSize parameter */
+        System.out.println("You have chosen token size: " + tokenSize + ".");
         char genRandom;
         Random r = new Random();
         List<String> tokenValue = new ArrayList<>();
@@ -29,6 +29,7 @@ public class token {
     }
 
     static boolean stringToIntValidator(String inputString){
+        /* returns true if values is int */
         try {
             Integer.parseInt(inputString);
             return true;
@@ -38,40 +39,36 @@ public class token {
 
     }
 
-
-    static void tokenLength(){
-
-    }
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         boolean result;
         String inputString;
         int tokenSize = 0;
-
+        int size1=5;
+        int size2=10;
+        int size3=15;
+        String wrongMessage = "";
         do {
-            System.out.println("Dostępne rozmiary tokenów to 5, 10, 15. Podaj cyfrę dla interesującego Cię rozmiaru tokenu.");
-
+            System.out.println("There are three acceptable token sizes. Available numbers are: "+ size1 + ", " + size2 + ", " + size3 +". Please provide value of your interest.");
             inputString = scanner.nextLine();
 
             if (stringToIntValidator(inputString)) {
                 tokenSize = Integer.parseInt(inputString);
-                if (tokenSize == 5) {
+                if (tokenSize == size1) {
                     result = true;
-                } else if (tokenSize == 10) {
+                } else if (tokenSize == size2) {
                     result = true;
-                } else if (tokenSize == 15) {
+                } else if (tokenSize == size3) {
                     result = true;
                 } else {
                     result = false;
-                    System.out.println("Wybrałeś złą cyfrę. Dostępne cyfry to: 5, 10, 15. Spróbuj jeszcze raz.");
+                    System.out.println("Wrong number. Available numbers are: "+ size1 + ", " + size2 + ", " + size3 +". Please try again.");
                 }
             } else {
                 result = false;
-                System.out.println("Akceptowane są tylko cyfry. Spróbuj jeszcze raz.");
+                System.out.println("Wrong character. Only numbers: "+ size1 + ", " + size2 + ", " + size3 +". are available. Please try again.");
             }
-
-
         } while (!result);
         tokenGenerator(tokenSize);
 
