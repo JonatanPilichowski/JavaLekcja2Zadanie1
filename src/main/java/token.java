@@ -1,23 +1,52 @@
-import com.sun.jdi.connect.Connector;
-
 import java.util.*;
 
 public class token {
-    static void tokenGenerator() {
-        System.out.println("Siema");
+    static void tokenGenerator(int tokenSize) {
+
+        //This method generates the token from 72 characters pool. Token size is specified by tokenSize parameter;
+        System.out.println("Wybrałeś token o rozmiarze: " + tokenSize + ".");
+        char genRandom;
+        Random r = new Random();
+        List<String> tokenValue = new ArrayList<>();
+        List<Integer> charactersToDraw = new ArrayList<>();
+        //ASCII: a-z = 97-122 ; A-Z 65-90 ; 0-9 = 48-57 ; [!@#$%^&*()] = 33, 35, 36, 37, 38, 40, 41, 42, 64, 94 ;
+        for (int i = 0; i <= 25; i++) {
+            charactersToDraw.add(65 + i);
+            charactersToDraw.add(97 + i);
+        }
+        for (int j = 0; j <= 9; j++) {
+            charactersToDraw.add(48 + j);
+        }
+        charactersToDraw.addAll(Arrays.asList(33, 35, 36, 37, 38, 40, 41, 42, 64, 94));
+
+        for (int k = 0; k < tokenSize; k++) {
+            int randomNumber = charactersToDraw.get(r.nextInt(charactersToDraw.size()));
+            genRandom = (char) randomNumber;
+            tokenValue.add(String.valueOf(genRandom));
+        }
+        String listString = String.join("", tokenValue);
+        System.out.println("Wygenerowano token: " + listString);
+    }
+
+    static void Validator(String inputString, boolean resultCheck){
+        Scanner scanner = new Scanner(System.in);
+        inputString = scanner.nextLine();
+        try {
+            Integer.parseInt(inputString);
+            resultCheck = true;
+        } catch (NumberFormatException ex) {
+            resultCheck = false;
+        }
 
     }
 
-
     public static void main(String[] args) {
 
-        tokenGenerator();
         Scanner scanner = new Scanner(System.in);
         boolean result;
-        char genRandom;
-        int tokenSize = 0;
         String inputString;
         boolean resultCheck;
+        int tokenSize = 0;
 
         do {
             System.out.println("Dostępne rozmiary tokenów to 5, 10, 15. Podaj cyfrę dla interesującego Cię rozmiaru tokenu.");
@@ -48,36 +77,8 @@ public class token {
 
 
         } while (!result);
+        tokenGenerator(tokenSize);
 
 
-        System.out.println("Wybrałeś token o rozmiarze: " + tokenSize + ".");
-
-        List<String> tokenValue = new ArrayList<>();
-
-        Random r = new Random();
-      //  List<Integer> charactersToDraw =  Arrays.asList(33,35,36,37,38,40,41,42,64,94);
-        List<Integer> charactersToDraw=new ArrayList<>();
-        // a-z = 97-122 ; A-Z 65-90 ; 0-9 = 48-57 ; [!@#$%^&*()] = 33, 35, 36, 37, 38, 40, 41, 42, 64, 94 ;
-        for (int i=0; i<=25; i++){
-            charactersToDraw.add(65+i);
-            charactersToDraw.add(97+i);
-        }
-
-      //  List<String> charactersToDrawChar = new ArrayList<>();
-
-
-        for (int j = 0; j < tokenSize; j++) {
-
-         //   genRandom = (char) (r.nextInt(93) + '!');
-         //   tokenValue.add(String.valueOf(genRandom));
-
-            int randomNumber=  charactersToDraw.get(r.nextInt(charactersToDraw.size()));
-            genRandom= (char) randomNumber;
-            tokenValue.add(String.valueOf(genRandom));
-        }
-        String listString = String.join("", tokenValue);
-        System.out.println("Wygenerowano token: " + listString);
-        System.out.println("lista: " + charactersToDraw);
     }
-
 }
