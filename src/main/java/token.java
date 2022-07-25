@@ -67,7 +67,7 @@ public class token {
                 }
             } else {
                 result = false;
-                System.out.println("Wrong character. Only numbers: "+ size1 + ", " + size2 + ", " + size3 +". are available. Please try again.");
+                System.out.println("Wrong character. Available numbers are: "+ size1 + ", " + size2 + ", " + size3 +". Please try again.");
             }
         } while (!result);
         tokenGenerator(tokenSize);
