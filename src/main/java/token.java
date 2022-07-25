@@ -28,37 +28,33 @@ public class token {
         System.out.println("Wygenerowano token: " + listString);
     }
 
-    static void Validator(String inputString, boolean resultCheck){
-        Scanner scanner = new Scanner(System.in);
-        inputString = scanner.nextLine();
+    static boolean stringToIntValidator(String inputString){
         try {
             Integer.parseInt(inputString);
-            resultCheck = true;
+            return true;
         } catch (NumberFormatException ex) {
-            resultCheck = false;
+            return false;
         }
 
     }
 
+
+    static void tokenLength(){
+
+    }
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         boolean result;
         String inputString;
-        boolean resultCheck;
         int tokenSize = 0;
 
         do {
             System.out.println("Dostępne rozmiary tokenów to 5, 10, 15. Podaj cyfrę dla interesującego Cię rozmiaru tokenu.");
 
             inputString = scanner.nextLine();
-            try {
-                Integer.parseInt(inputString);
-                resultCheck = true;
-            } catch (NumberFormatException ex) {
-                resultCheck = false;
-            }
-            if (resultCheck) {
+
+            if (stringToIntValidator(inputString)) {
                 tokenSize = Integer.parseInt(inputString);
                 if (tokenSize == 5) {
                     result = true;
